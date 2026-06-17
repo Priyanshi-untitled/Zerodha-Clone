@@ -17,7 +17,7 @@ code {
 }
 
 #supportHero{
-  background-color: rgb(56, 126, 209);
+  background-color: rgb(56,129,209);
   color: white;
 }
 
@@ -32,9 +32,9 @@ code {
 }
 
 #supportHero input{
-  padding: 20px 50px;
-  width: 100%;
-  font-size: 20px;
-  border-radius: 10px;
-  border: none;
+ padding: 20px 50px;
+ width: 100%;
+ font-size: 20px;
+ border-radius: 10px;
+ border: none;
 }
