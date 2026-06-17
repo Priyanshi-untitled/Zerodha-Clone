@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 const API_URL = process.env.REACT_APP_API_URL || "http://localhost:3002";
 const DASHBOARD_URL = process.env.REACT_APP_DASHBOARD_URL || "http://localhost:3001";
 
-function Signup() {
-  const [form, setForm] = useState({ username: "", email: "", password: "" });
+function Login() {
+  const [form, setForm] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
@@ -15,7 +15,7 @@ function Signup() {
     e.preventDefault();
     setError("");
     try {
-      const { data } = await axios.post(`${API_URL}/signup`, form, { withCredentials: true });
+      const { data } = await axios.post(`${API_URL}/login`, form, { withCredentials: true });
       if (data.success) {
         window.location.href = DASHBOARD_URL;
       } else {
@@ -28,17 +28,16 @@ function Signup() {
 
   return (
     <div className="container mt-5" style={{ maxWidth: "400px" }}>
-      <h2 className="mb-4">Create Account</h2>
+      <h2 className="mb-4">Login</h2>
       {error && <p style={{ color: "red" }}>{error}</p>}
       <form onSubmit={handleSubmit}>
-        <input className="form-control mb-3" name="username" placeholder="Username" value={form.username} onChange={handleChange} required />
         <input className="form-control mb-3" type="email" name="email" placeholder="Email" value={form.email} onChange={handleChange} required />
-        <input className="form-control mb-3" type="password" name="password" placeholder="Password" value={form.password} onChange={handleChange} required minLength={6} />
-        <button type="submit" className="btn btn-primary w-100">Sign Up</button>
+        <input className="form-control mb-3" type="password" name="password" placeholder="Password" value={form.password} onChange={handleChange} required />
+        <button type="submit" className="btn btn-primary w-100">Login</button>
       </form>
-      <p className="mt-3">Already have an account? <Link to="/login">Login</Link></p>
+      <p className="mt-3">New here? <Link to="/signup">Sign Up</Link></p>
     </div>
   );
 }
 
-export default Signup;
+export default Login;

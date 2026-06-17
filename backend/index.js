@@ -1,7 +1,11 @@
 require('dotenv').config();
 const express = require("express");
 const mongoose = require("mongoose");
-
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+const cookieParser = require("cookie-parser");
+const { UserModel } = require('./model/UserModel');
+const verifyUser = require('./middleware/authMiddleware');
 const bodyParser = require("body-parser");
 const cors = require("cors");
 
@@ -13,7 +17,12 @@ const PORT = process.env.PORT || 3002;
 const url = process.env.MONGO_URL;
 
 const app = express();
-app.use(cors());
+
+app.use(cors({
+  origin: [process.env.CLIENT_URL, process.env.DASHBOARD_URL],
+  credentials: true,
+}));
+app.use(cookieParser());
 app.use(bodyParser.json());
 
 const dns = require('dns');
@@ -186,16 +195,16 @@ app.get("/addPositions" ,async(req,res)=>{
     res.send("Done!");
 })
 
-app.get('/allHoldings',async(req,res)=>{
+app.get('/allHoldings',verifyUser,async(req,res)=>{
     let allHoldings = await HoldingsModel.find({});
     res.json(allHoldings);
 });
-app.get('/allPositions',async(req,res)=>{
+app.get('/allPositions',verifyUser, async(req,res)=>{
     let allPositions = await PositionsModel.find({});
     res.json(allPositions);
 });
 
-app.post('/newOrder', async(req,res)=>{
+app.post('/newOrder', verifyUser,async(req,res)=>{
     let newOrder = new OrdersModel({
         name: req.body.name,
         qty: req.body.qty,
@@ -204,6 +213,57 @@ app.post('/newOrder', async(req,res)=>{
     });
     newOrder.save();
     res.send("Order saved!");
+});
+
+const cookieOptions = {
+  httpOnly: true,
+  secure: process.env.NODE_ENV === "production",
+  sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+  maxAge: 7 * 24 * 60 * 60 * 1000,
+};
+
+app.post('/signup', async (req, res) => {
+  try {
+    const { username, email, password } = req.body;
+    const existingUser = await UserModel.findOne({ email });
+    if (existingUser) return res.json({ success: false, message: "User already exists" });
+
+    const hashedPassword = await bcrypt.hash(password, 10);
+    const user = await UserModel.create({ username, email, password: hashedPassword });
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: "7d" });
+    res.cookie("token", token, cookieOptions);
+    res.status(201).json({ success: true, message: "Signed up successfully" });
+  } catch (err) {
+    res.status(500).json({ success: false, message: "Server error" });
+  }
+});
+
+app.post('/login', async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    if (!email || !password) return res.json({ success: false, message: "All fields required" });
+
+    const user = await UserModel.findOne({ email });
+    if (!user) return res.json({ success: false, message: "Incorrect email or password" });
+
+    const match = await bcrypt.compare(password, user.password);
+    if (!match) return res.json({ success: false, message: "Incorrect email or password" });
+
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: "7d" });
+    res.cookie("token", token, cookieOptions);
+    res.json({ success: true, message: "Logged in successfully" });
+  } catch (err) {
+    res.status(500).json({ success: false, message: "Server error" });
+  }
+});
+
+app.get('/verify', verifyUser, (req, res) => {
+  res.json({ status: true, user: req.user.username });
+});
+
+app.post('/logout', (req, res) => {
+  res.clearCookie("token", cookieOptions);
+  res.json({ success: true, message: "Logged out" });
 });
 
 mongoose.connect(url, {
