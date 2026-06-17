@@ -2,38 +2,38 @@ import React from 'react';
 
 function Footer() {
     return ( 
-        <footer style={{backgroundColor: "rgb(250,250,250"}} >
+        <footer style={{backgroundColor: "rgb(250,250,250)"}} >
         <div className='container border-top mt-5'>
             <div className='row mt-5'>
                 <div className='col'>
                     <img src='media/images/logo.svg' style={{width:"50%"}}/>
-                    <p>
-                        &copy; 2010 - 2026, Zerodha Broking Ltd.All rights reserved.</p>
+                    <p>&copy; 2010 - 2026, Zerodha Broking Ltd.<br/>All rights reserved.</p>
+
+                    <div className="d-flex gap-3 mb-3">
+                        <a href="https://twitter.com/zerodhaonline" target="_blank" rel="noreferrer"><i className="bi bi-twitter-x"></i></a>
+                        <a href="https://facebook.com/zerodha" target="_blank" rel="noreferrer"><i className="bi bi-facebook"></i></a>
+                        <a href="https://instagram.com/zerodhaonline" target="_blank" rel="noreferrer"><i className="bi bi-instagram"></i></a>
+                        <a href="https://linkedin.com/company/zerodha" target="_blank" rel="noreferrer"><i className="bi bi-linkedin"></i></a>
+                    </div>
+
+                    <div className="d-flex gap-3 mb-3">
+                        <a href="https://youtube.com/zerodhaonline" target="_blank" rel="noreferrer"><i className="bi bi-youtube"></i></a>
+                        <a href="https://wa.me/918090020000" target="_blank" rel="noreferrer"><i className="bi bi-whatsapp"></i></a>
+                        <a href="https://t.me/zerodhaonline" target="_blank" rel="noreferrer"><i className="bi bi-telegram"></i></a>
+                    </div>
+
+                    <div className="d-flex gap-2">
+                        <a href="https://play.google.com/store/apps/details?id=com.zerodha.kite3" target="_blank" rel="noreferrer">
+                            <img src="media/images/googleplay.png" alt="Get it on Google Play" style={{height:"40px"}}/>
+                        </a>
+                        <a href="https://apps.apple.com/in/app/kite-by-zerodha/id1449677565" target="_blank" rel="noreferrer">
+                            <img src="media/images/appstore.png" alt="Download on the App Store" style={{height:"40px"}}/>
+                        </a>
+                    </div>
                 </div>
+
                 <div className='col'>
-                    <p>Company</p>
-                        <a href=''>About</a><br/>
-                        <a href=''>Philosophy</a><br/>
-                        <a href=''>Press & Media</a><br/>
-                        <a href=''>Careers</a><br/>
-                        <a href=''>Zerodha</a><br/>
-                        <a href=''>Zerodha.tech</a><br/>
-                        <a href=''>OpenSource</a><br/>
-                        <a href=''>Referral program</a><br/>
-                </div>
-                <div className='col'>
-                    <p>Support</p>
-                        <a href=''>Contact us</a><br/>
-                        <a href=''>Support portal</a><br/>
-                        <a href=''>How to file a complaint?</a><br/>
-                        <a href=''>Status of your complaints</a><br/>
-                        <a href=''>Bulletin</a><br/>
-                        <a href=''>Circular</a><br/>
-                        <a href=''>Z-Connect blog</a><br/>
-                        <a href=''>Downloads</a><br/>
-                </div>
-                <div className='col'>
-                    <p>Account</p>
+                    <p><strong>Account</strong></p>
                         <a href=''>Open demat account</a><br/>
                         <a href=''>Minor demat account</a><br/>
                         <a href=''>NRI demat account</a><br/>
@@ -43,7 +43,44 @@ function Footer() {
                         <a href=''>Fund transfer</a><br/>
                         <a href=''>MTF</a><br/>
                 </div>
+
+                <div className='col'>
+                    <p><strong>Support</strong></p>
+                        <a href=''>Contact us</a><br/>
+                        <a href=''>Support portal</a><br/>
+                        <a href=''>How to file a complaint?</a><br/>
+                        <a href=''>Status of your complaints</a><br/>
+                        <a href=''>Bulletin</a><br/>
+                        <a href=''>Circular</a><br/>
+                        <a href=''>Z-Connect blog</a><br/>
+                        <a href=''>Downloads</a><br/>
+                </div>
+
+                <div className='col'>
+                    <p><strong>Company</strong></p>
+                        <a href=''>About</a><br/>
+                        <a href=''>Philosophy</a><br/>
+                        <a href=''>Press & media</a><br/>
+                        <a href=''>Careers</a><br/>
+                        <a href=''>Zerodha Cares (CSR)</a><br/>
+                        <a href=''>Zerodha.tech</a><br/>
+                        <a href=''>Open source</a><br/>
+                        <a href=''>Referral program</a><br/>
+                </div>
+
+                <div className='col'>
+                    <p><strong>Quick links</strong></p>
+                        <a href=''>Upcoming IPOs</a><br/>
+                        <a href=''>Brokerage charges</a><br/>
+                        <a href=''>Market holidays</a><br/>
+                        <a href=''>Economic calendar</a><br/>
+                        <a href=''>Calculators</a><br/>
+                        <a href=''>Markets</a><br/>
+                        <a href=''>Sectors</a><br/>
+                        <a href=''>Gift Nifty</a><br/>
+                </div>
             </div>
+
             <div className='mt-5 text-small text-muted' style={{fontSize:"14px"}}>
             <p>Zerodha Broking Ltd.: Member of NSE, BSE, MCX & MSEI – SEBI Registration no.: INZ000031633 CDSL/NSDL: Depository services through Zerodha Broking Ltd. – SEBI Registration no.: IN-DP-431-2019 Registered Address: Zerodha Broking Ltd., #153/154, 4th Cross, Dollars Colony, Opp. Clarence Public School, J.P Nagar 4th Phase, Bengaluru - 560078, Karnataka, India. For any complaints pertaining to securities broking please write to complaints@zerodha.com, for DP related to dp@zerodha.com. Please ensure you carefully read the Risk Disclosure Document as prescribed by SEBI | ICF</p>
 

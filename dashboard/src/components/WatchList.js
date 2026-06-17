@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 
 import { Tooltip, Grow, keyframes } from "@mui/material";
 import { BarChartOutlined, KeyboardArrowDown, KeyboardArrowUp, MoreHoriz } from "@mui/icons-material";
 import { watchlist } from "../data/data";
 import { DoughnutChart } from "./DoughnutChart";
+import { GeneralContext } from "../context/GeneralContext";
 
 const labels = watchlist.map((subArray) => subArray.name);
 const WatchList = () => {
@@ -119,12 +120,18 @@ const WatchListItem = ({ stock }) => {
 };
 
 const WatchListActions = ({uid})=>{
+  const { openBuyWindow } = useContext(GeneralContext);
+
+  const handleBuyClick = () => {
+    openBuyWindow(uid);
+  };
+
   return (
     <span className="actions">
       <span>
         <Tooltip
         title="Buy(B)" placement="top" arrow TransitionComponent={Grow}>
-          <button className="buy">Buy</button>
+          <button className="buy" onClick={handleBuyClick}>Buy</button>
         </Tooltip>
         <Tooltip
         title="Sell(S)" placement="top" arrow TransitionComponent={Grow}>
