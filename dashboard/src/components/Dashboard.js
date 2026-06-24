@@ -1,6 +1,5 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import GeneralContextProvider from "../context/GeneralContext";
 
 import Apps from "./Apps";
 import Funds from "./Funds";
@@ -14,9 +13,7 @@ import WatchList from "./WatchList";
 const Dashboard = () => {
   return (
     <div className="dashboard-container">
-      <GeneralContextProvider>
-        <WatchList />
-      </GeneralContextProvider>
+      <WatchList />
       <div className="content">
         <Routes>
           <Route exact path="/" element={<Summary />} />

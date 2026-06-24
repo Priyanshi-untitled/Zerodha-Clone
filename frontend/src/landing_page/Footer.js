@@ -6,7 +6,7 @@ function Footer() {
         <div className='container border-top mt-5'>
             <div className='row mt-5'>
                 <div className='col'>
-                    <img src='media/images/logo.svg' style={{width:"50%"}}/>
+                    <img src='/media/images/logo.svg' style={{width:"50%"}}/>
                     <p>&copy; 2010 - 2026, Zerodha Broking Ltd.<br/>All rights reserved.</p>
 
                     <div className="d-flex gap-3 mb-3">
@@ -24,10 +24,10 @@ function Footer() {
 
                     <div className="d-flex gap-2">
                         <a href="https://play.google.com/store/apps/details?id=com.zerodha.kite3" target="_blank" rel="noreferrer">
-                            <img src="media/images/googleplay.png" alt="Get it on Google Play" style={{height:"40px"}}/>
+                            <img src="/media/images/googleplay.png" alt="Get it on Google Play" style={{height:"40px"}}/>
                         </a>
                         <a href="https://apps.apple.com/in/app/kite-by-zerodha/id1449677565" target="_blank" rel="noreferrer">
-                            <img src="media/images/appstore.png" alt="Download on the App Store" style={{height:"40px"}}/>
+                            <img src="/media/images/appstore.png" alt="Download on the App Store" style={{height:"40px"}}/>
                         </a>
                     </div>
                 </div>

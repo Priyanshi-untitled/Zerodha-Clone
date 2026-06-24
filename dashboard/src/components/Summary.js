@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
+import { GeneralContext } from "../context/GeneralContext";
 
 const Summary = () => {
+  const { user } = useContext(GeneralContext);
+
   return (
     <>
       <div className="username">
-        <h6>Hi, User!</h6>
+        <h6>Hi, {user || "User"}!</h6>
         <hr className="divider" />
       </div>
 

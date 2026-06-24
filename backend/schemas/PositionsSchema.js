@@ -1,6 +1,6 @@
 const {Schema} = require("mongoose");
 
-const PositionsSchema =  new Schema({
+const PositionsSchema = new Schema({
     product: String,
     name: String,
     qty: Number,
@@ -9,6 +9,7 @@ const PositionsSchema =  new Schema({
     net: String,
     day: String,
     isLoss: Boolean,
+    userId: { type: Schema.Types.ObjectId, ref: 'User', required: true },
 });
 
 module.exports = {PositionsSchema};

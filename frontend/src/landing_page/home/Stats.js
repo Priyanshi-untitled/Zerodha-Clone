@@ -3,8 +3,8 @@ import React from 'react';
 function Stats() {
     return ( 
         <div className='container p-3'>
-            <div className='row p-5'>
-                <div className='col-6 p-5'>
+            <div className='row p-md-5 align-items-center'>
+                <div className='col-12 col-md-6 p-md-5 mb-4 mb-md-0 text-center text-md-start'>
                     <h1 className='fs-2 mb-5'>Trust with Confidence</h1>
                     <h2 className='fs-4'>Customer-first always</h2>
                     <p className='text-muted'>
@@ -22,11 +22,11 @@ function Stats() {
                         With initiatives like Nudge and Kill Switch, we don't just facilitate transactions, but actively help you do better with your money.
                     </p>
                 </div>
-                <div className='col-6'>
-                    <img src='media/images/ecosystem.png' style={{width:"90%"}}/>
-                    <div className='text-center'>
-                        <a href='' className='mx-5' style={{textDecoration:"none"}}>Explore our products <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
-                        <a href='' style={{textDecoration:"none"}}>Try Kite demo <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+                <div className='col-12 col-md-6 text-center'>
+                    <img src='/media/images/ecosystem.png' style={{width:"90%"}} alt="Ecosystem" className='img-fluid mb-4' />
+                    <div className='text-center d-flex flex-column flex-sm-row justify-content-center gap-3'>
+                        <a href='' style={{textDecoration:"none"}}>Explore our products <i className="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+                        <a href='' style={{textDecoration:"none"}}>Try Kite demo <i className="fa fa-long-arrow-right" aria-hidden="true"></i></a>
                     </div>
                 </div>
             </div>
