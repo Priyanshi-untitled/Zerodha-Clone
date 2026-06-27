@@ -21,10 +21,22 @@ const app = express();
 
 dns.setServers(['8.8.8.8', '8.8.4.4']);
 
+const allowedOrigins = [
+  "https://zerodha-frontend.onrender.com",
+  "https://zerodha-dashboard.onrender.com",
+];
+
 app.use(cors({
-  origin: true,
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
   credentials: true,
 }));
+
 app.use(cookieParser());
 app.use(bodyParser.json());
 
