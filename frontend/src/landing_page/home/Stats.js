@@ -26,7 +26,7 @@ function Stats() {
                     <img src='/media/images/ecosystem.png' style={{width:"90%"}} alt="Ecosystem" className='img-fluid mb-4' />
                     <div className='text-center d-flex flex-column flex-sm-row justify-content-center gap-3'>
                         <a href='' style={{textDecoration:"none"}}>Explore our products <i className="fa fa-long-arrow-right" aria-hidden="true"></i></a>
-                        <a href='' style={{textDecoration:"none"}}>Try Kite demo <i className="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+                        <a href='https://kite-demo.zerodha.com/dashboard' style={{textDecoration:"none"}}>Try Kite demo <i className="fa fa-long-arrow-right" aria-hidden="true"></i></a>
                     </div>
                 </div>
             </div>
